@@ -1,0 +1,110 @@
+#define BLYNK_TEMPLATE_ID "your_template_id"
+#define BLYNK_DEVICE_NAME "your_device_name"
+#define BLYNK_AUTH_TOKEN "your_auth_token"
+
+#include <Blynk.h>
+#include <ESP8266WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp8266.h>
+
+// Set the WiFi credentials
+char auth[] = BLYNK_AUTH_TOKEN;
+char ssid[] = "your_wifi_ssid";
+char pass[] = "your_wifi_password";
+
+// Set the pin numbers for the relays
+int relay1Pin = 0; //change these GPIO pins
+int relay2Pin = 1;
+int relay3Pin = 2;
+int relay4Pin = 3;
+int relay5Pin = 4;
+int relay6Pin = 5;
+int relay7Pin = 6;
+int relay8Pin = 7;
+int relay9Pin = 8;
+int relay10Pin = 9;
+
+void setup()
+{
+// Initialize Blynk
+Blynk.begin(auth, ssid, pass);
+
+// Set the relay pins as output
+pinMode(relay1Pin, OUTPUT);
+pinMode(relay2Pin, OUTPUT);
+pinMode(relay3Pin, OUTPUT);
+pinMode(relay4Pin, OUTPUT);
+pinMode(relay5Pin, OUTPUT);
+pinMode(relay6Pin, OUTPUT);
+pinMode(relay7Pin, OUTPUT);
+pinMode(relay8Pin, OUTPUT);
+pinMode(relay9Pin, OUTPUT);
+pinMode(relay10Pin, OUTPUT);
+
+// Turn all the relays off at startup
+digitalWrite(relay1Pin, HIGH);
+digitalWrite(relay2Pin, HIGH);
+digitalWrite(relay3Pin, HIGH);
+digitalWrite(relay4Pin, HIGH);
+digitalWrite(relay5Pin, HIGH);
+digitalWrite(relay6Pin, HIGH);
+digitalWrite(relay7Pin, HIGH);
+digitalWrite(relay8Pin, HIGH);
+digitalWrite(relay9Pin, HIGH);
+digitalWrite(relay10Pin, HIGH);
+}
+
+void loop()
+{
+// Run the Blynk loop
+Blynk.run();
+}
+
+// Create a Blynk function for each relay
+BLYNK_WRITE(V1) // Virtual pin 1 for relay 1
+{
+int state = param.asInt();
+digitalWrite(relay1Pin, !state);
+}
+
+BLYNK_WRITE(V2) // Virtual pin 2 for relay 2
+{
+int state = param.asInt();
+digitalWrite(relay2Pin, !state);
+}
+
+BLYNK_WRITE(V3) // Virtual pin 3 for relay 3
+{
+int state = param.asInt();
+digitalWrite(relay3Pin, !state);
+}
+
+BLYNK_WRITE(V4) // Virtual pin 4 for relay 4
+{
+int state = param.asInt();
+digitalWrite(relay4Pin, !state);
+}
+
+BLYNK_WRITE(V5) // Virtual pin 5 for relay 5
+{
+int state = param.asInt();
+digitalWrite(relay5Pin, !state);
+}
+
+BLYNK_WRITE(V6) // Virtual pin 6 for relay 6
+{
+int state = param.asInt();
+digitalWrite(relay6Pin, !state);
+}
+
+BLYNK_WRITE(V7) // Virtual pin 7 for relay 7
+{
+int state = param.asInt();
+digitalWrite(relay7Pin, !state);
+}
+
+BLYNK_WRITE(V8) // Virtual pin 8 for relay 8
+{
+int state = param.asInt();
+digitalWrite(relay8Pin, !state);
+}
